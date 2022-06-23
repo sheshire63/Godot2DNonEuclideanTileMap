@@ -1,0 +1,232 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Level2.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TileSet.tres" type="TileSet" id=3]
+[ext_resource path="res://Trigger.gd" type="Script" id=5]
+[ext_resource path="res://Main.gd" type="Script" id=6]
+
+[node name="Main" type="Node"]
+script = ExtResource( 6 )
+
+[node name="Level" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 0 )
+
+[node name="Segments" type="Node2D" parent="."]
+
+[node name="Start" type="TileMap" parent="Segments"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -262146, 0, 65536, -262145, 1, 0, -327680, 1, 0, -327679, 0, 65536, -196611, 0, 65537, -196610, 0, 131074, -196609, 1, 0, -262144, 1, 0, -262143, 0, 131073, -262142, 0, 65538, -131075, 0, 65543, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 0, 65543, -65539, 0, 65543, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 0, 65543, -3, 0, 131073, -2, 0, 65538, -1, 1, 0, -65536, 1, 0, -65535, 0, 65537, -65534, 0, 131074, 65534, 0, 65543, 65535, 1, 0, 0, 1, 0, 1, 0, 65543, 131070, 0, 131073, 131071, 0, 7, 65536, 0, 7, 65537, 0, 131074 )
+
+[node name="toChurch" type="Node2D" parent="Segments/Start"]
+position = Vector2( 0, -640 )
+rotation = -6.28318
+z_index = 1
+script = ExtResource( 5 )
+size = 272.0
+target_path = NodePath("../../ChurchEntry/toStart")
+
+[node name="ChurchEntry" type="TileMap" parent="Segments"]
+position = Vector2( 0, -768 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -393220, 0, 196608, -393219, 0, 196609, -393218, 1, 0, -393217, 2, 8, -458752, 2, 11, -458751, 1, 0, -458750, 0, 196608, -458749, 0, 196609, -327684, 0, 262144, -327683, 0, 262145, -327682, 1, 0, -327681, 2, 65544, -393216, 2, 131083, -393215, 1, 0, -393214, 0, 262144, -393213, 0, 262145, -262148, 1, 0, -262147, 1, 0, -262146, 1, 0, -262145, 2, 65544, -327680, 2, 131083, -327679, 1, 0, -327678, 1, 0, -327677, 1, 0, -196612, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 2, 65544, -262144, 2, 131083, -262143, 1, 0, -262142, 1, 0, -262141, 1, 0, -131076, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 2, 196616, -196608, 2, 196619, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -65540, 0, 196608, -65539, 0, 196609, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 0, 196608, -131069, 0, 196609, -4, 0, 262144, -3, 0, 196614, -2, 0, 2, -1, 1, 0, -65536, 1, 0, -65535, 0, 1, -65534, 0, 327686, -65533, 0, 262145 )
+
+[node name="toStart" type="Node2D" parent="Segments/ChurchEntry"]
+rotation = -3.14159
+z_index = 1
+script = ExtResource( 5 )
+size = 272.0
+target_path = NodePath("../../Start/toChurch")
+
+[node name="toC1" type="Node2D" parent="Segments/ChurchEntry"]
+position = Vector2( -512, -448 )
+rotation = -1.57079
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchC1/toEntry")
+
+[node name="toCSE" type="Node2D" parent="Segments/ChurchEntry"]
+position = Vector2( 512, -448 )
+rotation = -4.71238
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchSE/toEntry")
+
+[node name="toCenter" type="Node2D" parent="Segments/ChurchEntry"]
+position = Vector2( 0, -896 )
+z_index = 1
+script = ExtResource( 5 )
+size = 528.0
+target_path = NodePath("../../ChurchCenter/toEntry")
+
+[node name="ChurchCenter" type="TileMap" parent="Segments"]
+position = Vector2( 0, -1792 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -393220, 0, 196608, -393219, 0, 196609, -393218, 1, 0, -393217, 2, 8, -458752, 2, 11, -458751, 1, 0, -458750, 0, 196608, -458749, 0, 196609, -327684, 0, 262144, -327683, 0, 262145, -327682, 1, 0, -327681, 2, 65544, -393216, 2, 131083, -393215, 1, 0, -393214, 0, 262144, -393213, 0, 262145, -262148, 1, 0, -262147, 1, 0, -262146, 1, 0, -262145, 2, 65544, -327680, 2, 131083, -327679, 1, 0, -327678, 1, 0, -327677, 1, 0, -196612, 2, 8, -196611, 2, 10, -196610, 2, 10, -196609, 2, 65541, -262144, 2, 65542, -262143, 2, 10, -262142, 2, 10, -262141, 2, 11, -131076, 2, 196616, -131075, 2, 196617, -131074, 2, 196617, -131073, 2, 131077, -196608, 2, 131078, -196607, 2, 196617, -196606, 2, 196617, -196605, 2, 196619, -65540, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 2, 65544, -131072, 2, 131083, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -4, 0, 196608, -3, 0, 196609, -2, 1, 0, -1, 2, 65544, -65536, 2, 131083, -65535, 1, 0, -65534, 0, 196608, -65533, 0, 196609, 65532, 0, 262144, 65533, 0, 262145, 65534, 1, 0, 65535, 2, 196616, 0, 2, 196619, 1, 1, 0, 2, 0, 262144, 3, 0, 262145 )
+
+[node name="toEntry" type="Node2D" parent="Segments/ChurchCenter"]
+position = Vector2( 0, 128 )
+rotation = -3.14159
+z_index = 1
+script = ExtResource( 5 )
+size = 528.0
+target_path = NodePath("../../ChurchEntry/toCenter")
+
+[node name="toAltar" type="Node2D" parent="Segments/ChurchCenter"]
+position = Vector2( 0, -896 )
+z_index = 1
+script = ExtResource( 5 )
+size = 528.0
+target_path = NodePath("../../ChurchAltar/toCenter")
+
+[node name="toLoopLeft" type="Node2D" parent="Segments/ChurchCenter"]
+position = Vector2( -512, -384 )
+rotation = -1.57079
+z_index = 1
+script = ExtResource( 5 )
+size = 528.0
+target_path = NodePath("../toLoopRight")
+
+[node name="toLoopRight" type="Node2D" parent="Segments/ChurchCenter"]
+position = Vector2( 512, -384 )
+rotation = -4.71238
+z_index = 1
+script = ExtResource( 5 )
+size = 528.0
+target_path = NodePath("../toLoopLeft")
+
+[node name="ChurchAltar" type="TileMap" parent="Segments"]
+position = Vector2( 0, -2880 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -393220, 0, 196608, -393219, 0, 262151, -393218, 0, 7, -393217, 0, 7, -458752, 0, 7, -458751, 0, 7, -458750, 0, 65538, -327684, 0, 196613, -327683, 0, 262145, -327682, 1, 0, -327681, 1, 0, -393216, 1, 0, -393215, 1, 0, -393214, 0, 131073, -393213, 0, 65538, -262148, 0, 131072, -262147, 1, 0, -262146, 2, 8, -262145, 2, 10, -327680, 2, 10, -327679, 2, 11, -327678, 1, 0, -327677, 0, 131072, -196612, 1, 0, -196611, 1, 0, -196610, 2, 65544, -196609, 2, 131081, -262144, 2, 131081, -262143, 2, 131083, -262142, 1, 0, -262141, 1, 0, -131076, 1, 0, -131075, 1, 0, -131074, 2, 196616, -131073, 2, 131077, -196608, 2, 131078, -196607, 2, 196619, -196606, 1, 0, -196605, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 2, 65544, -131072, 2, 131083, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -4, 0, 196608, -3, 0, 196609, -2, 1, 0, -1, 2, 65544, -65536, 2, 131083, -65535, 1, 0, -65534, 0, 196608, -65533, 0, 196609, 65532, 0, 262144, 65533, 0, 262145, 65534, 1, 0, 65535, 2, 196616, 0, 2, 196619, 1, 1, 0, 2, 0, 262144, 3, 0, 262145 )
+
+[node name="toCenter" type="Node2D" parent="Segments/ChurchAltar"]
+position = Vector2( 0, 128 )
+rotation = -3.14159
+z_index = 1
+script = ExtResource( 5 )
+size = 528.0
+target_path = NodePath("../../ChurchCenter/toAltar")
+
+[node name="roConerL" type="Node2D" parent="Segments/ChurchAltar"]
+position = Vector2( -512, -320 )
+rotation = -1.57079
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchC2/toAltar")
+
+[node name="toCornerNE" type="Node2D" parent="Segments/ChurchAltar"]
+position = Vector2( 512, -320 )
+rotation = 1.57079
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchNE/toAltar")
+
+[node name="ChurchC1" type="TileMap" parent="Segments"]
+position = Vector2( -1280, -896 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -327682, 0, 65536, -327681, 1, 0, -393216, 1, 0, -393215, 1, 0, -393214, 0, 196608, -393213, 0, 196609, -262146, 0, 65543, -262145, 1, 0, -327680, 1, 0, -327679, 1, 0, -327678, 0, 262144, -327677, 0, 262145, -196610, 0, 65543, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 1, 0, -131074, 0, 65543, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -65538, 0, 65543, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -2, 0, 131073, -1, 0, 7, -65536, 0, 7, -65535, 0, 7, -65534, 0, 7, -65533, 0, 2 )
+
+[node name="toEntry" type="Node2D" parent="Segments/ChurchC1"]
+position = Vector2( 512, -320 )
+rotation = -4.71238
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchEntry/toC1")
+
+[node name="toCornerNW" type="Node2D" parent="Segments/ChurchC1"]
+position = Vector2( 64, -768 )
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchC2/toCornerSW")
+
+[node name="ChurchC2" type="TileMap" parent="Segments"]
+position = Vector2( -1088, -2880 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -262146, 0, 65537, -262145, 0, 7, -327680, 0, 7, -327679, 0, 7, -327678, 0, 7, -327677, 0, 2, -196610, 0, 65543, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 1, 0, -131074, 0, 65543, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -65538, 0, 65543, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -2, 0, 65543, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 0, 196608, -65533, 0, 196609, 65534, 0, 131072, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 0, 262144, 3, 0, 262145 )
+
+[node name="toAltar" type="Node2D" parent="Segments/ChurchC2"]
+position = Vector2( 512, -320 )
+rotation = 1.57079
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchAltar/roConerL")
+
+[node name="toCornerSW" type="Node2D" parent="Segments/ChurchC2"]
+position = Vector2( 64, 128 )
+rotation = 3.14159
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchC1/toCornerNW")
+
+[node name="ChurchNE" type="TileMap" parent="Segments"]
+position = Vector2( 896, -2944 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -262146, 0, 1, -262145, 0, 7, -327680, 0, 7, -327679, 0, 7, -327678, 0, 7, -327677, 0, 65538, -196610, 1, 0, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 0, 65543, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 0, 65543, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 0, 65543, -2, 0, 196608, -1, 0, 196609, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 0, 65543, 65534, 0, 262144, 65535, 0, 262145, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 0, 131072 )
+
+[node name="toAltar" type="Node2D" parent="Segments/ChurchNE"]
+position = Vector2( -256, -320 )
+rotation = 4.71238
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchAltar/toCornerNE")
+
+[node name="toCornerSE" type="Node2D" parent="Segments/ChurchNE"]
+position = Vector2( 192, 128 )
+rotation = 3.14159
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchSE/toCornerNW")
+
+[node name="ChurchSE" type="TileMap" parent="Segments"]
+position = Vector2( 960, -960 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -327682, 0, 196608, -327681, 0, 196609, -393216, 1, 0, -393215, 1, 0, -393214, 1, 0, -393213, 0, 65536, -262146, 0, 262144, -262145, 0, 262145, -327680, 1, 0, -327679, 1, 0, -327678, 1, 0, -327677, 0, 65543, -196610, 1, 0, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 0, 65543, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 0, 65543, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 0, 65543, -2, 0, 1, -1, 0, 7, -65536, 0, 7, -65535, 0, 7, -65534, 0, 7, -65533, 0, 131074 )
+
+[node name="toEntry" type="Node2D" parent="Segments/ChurchSE"]
+position = Vector2( -256, -320 )
+rotation = 4.71238
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchEntry/toCSE")
+
+[node name="toCornerNW" type="Node2D" parent="Segments/ChurchSE"]
+position = Vector2( 192, -768 )
+rotation = 6.28318
+z_index = 1
+script = ExtResource( 5 )
+size = 400.0
+target_path = NodePath("../../ChurchNE/toCornerSE")
